@@ -13,7 +13,8 @@ const match: Record<keyof typeof Icons, JSX.Element> = {
   block: Icons.block,
   commit: Icons.commit,
   arrow_right: Icons.arrow_right,
-  heart: Icons.heart
+  heart: Icons.heart,
+  fill: Icons.fill
 };
 
 interface IconProps {

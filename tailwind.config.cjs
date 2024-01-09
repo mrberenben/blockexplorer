@@ -17,6 +17,7 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        accent: "#3edef7",
         placeholder: "hsl(var(--placeholder))",
         binance: "#F3BA2F",
         ethereum: "#637FEA",
@@ -39,11 +40,6 @@ module.exports = {
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))"
-        },
-        accent: {
-          DEFAULT: "#fbbe16",
-          foreground: "#181a1b",
-          hover: "#edb418"
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

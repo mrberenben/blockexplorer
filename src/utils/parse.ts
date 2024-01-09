@@ -1,3 +1,6 @@
+// ethers
+import { ethers } from "ethers";
+
 export function parse<T>(data: T) {
   if (!data) {
     throw new Error("[Parse] Data must be provided.");
@@ -48,8 +51,8 @@ type FormatterOptions = Intl.NumberFormatOptions;
  * @param value number that will be formatted
  * @returns formatted number
  */
-export function format(value: number | undefined, options?: FormatterOptions) {
-  if (typeof value !== "number") {
+export function format(value: number | null | undefined, options?: FormatterOptions) {
+  if (typeof value !== "number" || value === null) {
     return value;
   }
 
@@ -60,4 +63,17 @@ export function format(value: number | undefined, options?: FormatterOptions) {
   });
 
   return formatter.format(value);
+}
+
+/**
+ * Formats number as more human-readable shape
+ * @param value number that will be formatted
+ * @returns formatted number
+ */
+export function units(value: BigInt | number | string | null | undefined, unit?: string | ethers.Numeric | undefined) {
+  if (typeof value === "undefined" || value === null) {
+    return value;
+  }
+
+  return Number(ethers.formatUnits(Number(value), unit));
 }

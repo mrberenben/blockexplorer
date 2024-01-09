@@ -68,7 +68,7 @@ function AppLogo() {
       to="/"
       title="Ethereum Explorer"
       aria-label="Ethereum Explorer"
-      className="flex items-center gap-x-2 min-w-[240px] font-bold text-sm uppercase"
+      className="flex items-center gap-x-2 min-w-[240px] font-bold text-sm uppercase tracking-tight"
     >
       <span className="relative flex w-6 h-6 overflow-hidden">
         <Image src={Images.Ethereum} objectFit="contain" width="100%" height="100%" />

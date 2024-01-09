@@ -96,3 +96,14 @@ export const heart = (
     />
   </svg>
 );
+
+export const fill = (
+  <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M6 0H8V2H6V0ZM10 4V2H8V4H6V6H4V8H2V10H0V12H2V14H4V16H6V18H8V20H10V18H12V16H14V14H16V20H18V10H16V8H14V6H12V4H10ZM10 4V6H12V8H14V10H16V12H14V14H12V16H10V18H8V16H6V14H4V12H2V10H4V8H6V6H8V4H10Z"
+      fill="currentColor"
+    />
+  </svg>
+);
