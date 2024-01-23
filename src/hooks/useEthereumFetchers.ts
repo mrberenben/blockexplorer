@@ -1,7 +1,7 @@
 import React from "react";
 
 // utils
-import { get_estimated_gas, get_ether_price, get_latest_block, get_total_transactions } from "~/utils/ethers";
+import { get_estimated_gas, get_ether_price, get_latest_block_number, get_total_transactions } from "~/utils/etherscan";
 
 interface EthereumStats {
   ether: number;
@@ -17,26 +17,33 @@ const INITIAL_ETHEREUM_STATS: EthereumStats = {
   transactions: 0
 };
 
-export function useEthereumStats(): EthereumStats {
+type useEthereumStatsReturnType = {
+  stats: EthereumStats;
+  refetch: () => Promise<void>;
+};
+
+export function useEthereumStats(): useEthereumStatsReturnType {
   const [stats, setStats] = React.useState<EthereumStats>(INITIAL_ETHEREUM_STATS);
 
-  React.useEffect(() => {
-    void (async function () {
-      const [ether, latest, gas, transactions] = await Promise.all([
-        get_ether_price(),
-        get_latest_block(),
-        get_estimated_gas(),
-        get_total_transactions()
-      ]);
+  async function refetch() {
+    const [ether, latest, gas, transactions] = await Promise.all([
+      get_ether_price(),
+      get_latest_block_number(),
+      get_estimated_gas(),
+      get_total_transactions()
+    ]);
 
-      setStats({
-        ether,
-        latest,
-        gas: gas.gasPrice,
-        transactions
-      });
-    })();
+    setStats({
+      ether,
+      latest,
+      gas: gas.gasPrice,
+      transactions
+    });
+  }
+
+  React.useEffect(() => {
+    refetch();
   }, []);
 
-  return stats;
+  return { stats, refetch };
 }

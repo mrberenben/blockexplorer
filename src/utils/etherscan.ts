@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 
 const provider = new ethers.EtherscanProvider(undefined, import.meta.env.VITE_ETHERSCAN_SECRET);
 
-export async function get_latest_block() {
+export async function get_latest_block_number() {
   return await provider.getBlockNumber();
 }
 

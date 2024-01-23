@@ -14,6 +14,7 @@ import { cn } from "~/utils/cn";
 
 // config
 import * as Images from "~/config/images";
+import LiveUpdate from "./LiveUpdate";
 
 const pageVariants = {
   initial: {
@@ -185,12 +186,17 @@ export function Container({ children, className }: DefaultLayoutProps) {
 interface SectionProps extends DefaultLayoutProps {
   title?: string | React.ReactNode;
   className?: string;
+  live?: boolean;
 }
 
-export function Section({ title, className, children }: SectionProps) {
+export function Section({ title, className, live, children }: SectionProps) {
   return (
     <section className={cn("flex flex-1 flex-col gap-y-4 py-10", className)}>
-      {title ? typeof title === "string" ? <h3 className="text-xl font-black uppercase">{title}</h3> : title : null}
+      <div className="flex flex-1 items-center justify-between">
+        {title ? typeof title === "string" ? <h3 className="text-xl font-black uppercase">{title}</h3> : title : null}
+
+        {live && <LiveUpdate />}
+      </div>
 
       <div className="flex flex-col w-full">{children}</div>
     </section>
