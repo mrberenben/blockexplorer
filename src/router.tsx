@@ -5,6 +5,7 @@ import AppLayout from "~/components/Layout";
 
 // routes
 import Index from "~/pages/index";
+import Block from "~/pages/$block";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Index />
+      },
+      {
+        path: "/block/:block",
+        element: <Block />
       }
     ]
   }

@@ -99,6 +99,8 @@ module.exports = {
   },
   corePlugins: {
     preflight: true,
-    divideStyle: true
-  }
+    divideStyle: true,
+    animation: true
+  },
+  plugins: [require("tailwindcss-animate")]
 };

@@ -1,7 +1,7 @@
 import React from "react";
 
 // utils
-import { get_last_blocks, get_latest_block, get_latest_transactions } from "~/utils/node";
+import { get_block, get_last_blocks, get_latest_block, get_latest_transactions } from "~/utils/node";
 
 // types
 import { Block, Transaction } from "~/types/node.types";
@@ -52,6 +52,19 @@ export function useLatestBlock(): Block | undefined {
   React.useEffect(() => {
     void (async function () {
       const block = await get_latest_block();
+      setBlock(block as unknown as Block);
+    })();
+  }, []);
+
+  return block;
+}
+
+export function useBlockDetails(block_number: string | number): Block | undefined {
+  const [block, setBlock] = React.useState<Block | undefined>(undefined);
+
+  React.useEffect(() => {
+    void (async function () {
+      const block = await get_block(block_number);
       setBlock(block as unknown as Block);
     })();
   }, []);

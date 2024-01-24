@@ -107,3 +107,14 @@ export const fill = (
     />
   </svg>
 );
+
+export const info = (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M-0.000488281 0H1.99951V18H-0.000488281V0ZM15.9998 3.05176e-05H2V2.00003H15.9998V16H2V18H16V18H17.9998V0H15.9998V3.05176e-05ZM7.99982 6.00009H9.99982V4.00009H7.99982V6.00009ZM9.99982 14H7.99982V8.00003H9.99982V14Z"
+      fill="currentColor"
+    />
+  </svg>
+);

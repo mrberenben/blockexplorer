@@ -192,7 +192,7 @@ interface SectionProps extends DefaultLayoutProps {
 export function Section({ title, className, live, children }: SectionProps) {
   return (
     <section className={cn("flex flex-1 flex-col gap-y-4 py-10", className)}>
-      <div className="flex flex-1 items-center justify-between">
+      <div className="flex items-center justify-between pr-2">
         {title ? typeof title === "string" ? <h3 className="text-xl font-black uppercase">{title}</h3> : title : null}
 
         {live && <LiveUpdate />}

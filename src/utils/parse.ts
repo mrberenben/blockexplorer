@@ -1,9 +1,10 @@
 // ethers
-import { ethers } from "ethers";
+import { ethers, type BytesLike } from "ethers";
 
 export function parse<T>(data: T) {
   if (!data) {
-    throw new Error("[Parse] Data must be provided.");
+    console.error("[Parse] Data must be provided.");
+    return {};
   }
 
   const parsed = typeof data === "string" && (data.startsWith("{") || data.startsWith("[")) ? JSON.parse(data) : data;
@@ -13,7 +14,8 @@ export function parse<T>(data: T) {
 // stringify message before send
 export function stringify<T>(data: T) {
   if (!data) {
-    throw new Error("[Parse] Data must be provided.");
+    console.error("[Parse] Data must be provided.");
+    return "";
   }
 
   const stringified = typeof data !== "string" ? JSON.stringify(data) : data;
@@ -27,7 +29,8 @@ export function stringify<T>(data: T) {
  */
 export function truncate(address: string | `0x${string}`) {
   if (typeof address !== "string") {
-    throw new Error("[Parse] Address must be provided.");
+    console.error("[Parse] Address must be provided.");
+    return address;
   }
 
   const ETH_REGEX = /^(0x[a-zA-Z0-9]{4})[a-zA-Z0-9]+([a-zA-Z0-9]{4})$/;
@@ -35,7 +38,8 @@ export function truncate(address: string | `0x${string}`) {
   const match = address.match(ETH_REGEX);
 
   if (!match) {
-    throw new Error("[Parse] Address must be match ethereum regex.");
+    console.error("[Parse] Address must be match ethereum regex.");
+    return address;
   }
 
   return `${match[1]}••••${match[2]}`;
@@ -76,4 +80,23 @@ export function units(value: BigInt | number | string | null | undefined, unit?:
   }
 
   return Number(ethers.formatUnits(Number(value), unit));
+}
+
+export function read_hex(hex: BytesLike): string {
+  try {
+    return ethers.toUtf8String(hex);
+  } catch {
+    return "-";
+  }
+}
+
+export function read_as_ether(wei: bigint): string {
+  return ethers.formatUnits(Number(wei), "ether");
+}
+
+export function random(min: number, max: number): number {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }

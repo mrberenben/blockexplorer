@@ -29,6 +29,11 @@ export async function get_latest_block() {
   return block;
 }
 
+export async function get_block(block_number: string | number) {
+  const block = await node.core.getBlock(Number(block_number));
+  return block;
+}
+
 export async function get_latest_transactions(): Promise<Transaction[]> {
   const block = await get_latest_block();
 
@@ -40,5 +45,5 @@ export async function get_latest_transactions(): Promise<Transaction[]> {
 }
 
 export function format_ether(value: bigint) {
-  return Utils.formatEther(value);
+  return Utils.formatEther(Utils.hexValue(value));
 }

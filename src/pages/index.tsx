@@ -33,8 +33,8 @@ export default function Index() {
 function Stats() {
   const { stats, refetch } = useEthereumStats();
 
-  // update every 10 seconds
-  useInterval(() => refetch(), 10_000);
+  // update every 15 seconds
+  useInterval(() => refetch(), 15_000);
 
   return (
     <Section title={<StatsTitle />}>
@@ -112,8 +112,8 @@ function LatestActions() {
 function LatestBlocks() {
   const { blocks, refetch } = useLastBlocks();
 
-  // update every 10 seconds
-  useInterval(() => refetch(), 10_000);
+  // update every 15 seconds
+  useInterval(() => refetch(), 15_000);
 
   return (
     <div className="flex flex-1 flex-col rounded border border-solid border-border divide-y divide-solid divide-border">
@@ -134,7 +134,7 @@ function LatestTransactions() {
   const { transactions, refetch } = useLastTransactions();
 
   // update every 10 seconds
-  useInterval(() => refetch(), 10_000);
+  useInterval(() => refetch(), 15_000);
 
   return (
     <div className="flex flex-1 flex-col rounded border border-solid border-border divide-y divide-solid divide-border">

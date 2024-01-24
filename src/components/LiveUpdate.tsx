@@ -9,7 +9,7 @@ export default function LiveUpdate() {
         <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" />
       </span>
 
-      <h3 className="text-xs font-black uppercase">REAL-TIME</h3>
+      <h3 className="text-xs font-black uppercase text-muted-foreground">REAL-TIME</h3>
     </div>
   );
 }
